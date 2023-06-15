@@ -7,6 +7,7 @@ export class MoocBackendApp {
         const port = Number(process.env.PORT) ?? 5000;
         this.server = new Server(port);
 
+        console.log('ANTES DE INVOCAR MÉTODO LISTEN');
         return this.server.listen();
     }
 

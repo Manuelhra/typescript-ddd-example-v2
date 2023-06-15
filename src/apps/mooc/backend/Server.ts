@@ -29,6 +29,7 @@ export class Server {
         router.use(errorHandler);
         this.express.use(router);
 
+        console.log('PRINT LOG ***************');
         registerRoutes(router);
 
 		router.use((err: Error, _req: Request, res: Response, _next: NextFunction): void => {
@@ -38,6 +39,7 @@ export class Server {
     } 
 
     async listen(): Promise<void> {
+        console.log('CORRIENDO MÉTODO LISTEN DE LA INSTANCIA MOOC A´PP')
         return new Promise((resolve, _reject) => {
             const env = this.express.get('env') as string;
             this.httpServer = this.express.listen(this.port, () => {
