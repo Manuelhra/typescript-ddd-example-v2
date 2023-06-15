@@ -1,4 +1,5 @@
-import express, { Express, NextFunction, Request, Response, Router } from 'express'
+import express, { Express, NextFunction, Request, Response } from 'express'
+import Router from 'express-promise-router';
 import * as http from 'http'
 import { json, urlencoded } from 'body-parser'
 import helmet from 'helmet';
@@ -10,26 +11,25 @@ import { registerRoutes  } from './routes';
 
 export class Server {
     private readonly express: Express;
-    private readonly port: number;
+    private readonly port: string;
     private httpServer?: http.Server;
 
-    constructor(port: number) {
+    constructor(port: string) {
         this.port = port;
         this.express = express();
 
         this.express.use(json());
-        this.express.use(urlencoded());
+        this.express.use(urlencoded({ extended: true }));
         this.express.use(helmet.xssFilter());
         this.express.use(helmet.noSniff());
         this.express.use(helmet.hidePoweredBy());
         this.express.use(helmet.frameguard({ action: 'deny' }));
         this.express.use(compression());
 
-        const router: Router = Router();
+        const router: express.Router = Router();
         router.use(errorHandler);
         this.express.use(router);
 
-        console.log('PRINT LOG ***************');
         registerRoutes(router);
 
 		router.use((err: Error, _req: Request, res: Response, _next: NextFunction): void => {
@@ -39,7 +39,6 @@ export class Server {
     } 
 
     async listen(): Promise<void> {
-        console.log('CORRIENDO MÉTODO LISTEN DE LA INSTANCIA MOOC A´PP')
         return new Promise((resolve, _reject) => {
             const env = this.express.get('env') as string;
             this.httpServer = this.express.listen(this.port, () => {
