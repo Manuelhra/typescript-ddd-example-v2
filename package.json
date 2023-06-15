@@ -33,6 +33,7 @@
     "compression": "^1.7.4",
     "express": "^4.18.2",
     "glob": "^10.2.7",
-    "helmet": "^7.0.0"
+    "helmet": "^7.0.0",
+    "http-status": "^1.6.2"
   }
 }
