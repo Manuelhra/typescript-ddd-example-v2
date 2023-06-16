@@ -27,7 +27,7 @@ export class Server {
         this.express.use(compression());
 
         const router: express.Router = Router();
-        router.use(errorHandler);
+        router.use(errorHandler());
         this.express.use(router);
 
         registerRoutes(router);

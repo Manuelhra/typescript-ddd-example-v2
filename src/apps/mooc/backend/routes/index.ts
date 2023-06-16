@@ -8,5 +8,6 @@ const register = (routePath: string, router: Router): void => {
 
 export const registerRoutes = (router: Router): void => {
     const routes: string[] = glob.sync(`${__dirname}/**/*.route.*`);
+    console.log(routes)
     routes.map((route) => register(route, router));
 }
