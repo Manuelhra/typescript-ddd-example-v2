@@ -1,9 +1,7 @@
 import { Request, Response, Router } from 'express';
 
-import { StatusGetController } from '../controllers/StatusGetController';
+import { statusGetController } from '../dependency-injection/container';
 
 export const register = (router: Router) => {
-    console.log('REGISTRANDO ROUTES ****');
-    const controller: StatusGetController = new StatusGetController();
-    router.get('/status', (req: Request, res: Response) => controller.run(req, res));
+    router.get('/status', (req: Request, res: Response) => statusGetController.run(req, res));
 }
