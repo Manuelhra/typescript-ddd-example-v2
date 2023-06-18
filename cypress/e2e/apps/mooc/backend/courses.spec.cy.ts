@@ -6,12 +6,11 @@ describe('Invoke service Courses', () => {
         method: 'PUT',
         url: '/courses/ef8ac118-8d7f-49cc-abec-78e0d05af80a',
         body: { name: 'The best course', duration: "5 hours" },
-        failOnStatusCode: false,
         })
-        .its('status')
-        .should('equal', httpStatus.CREATED)
-        .end()
-        .its('body')
-        .should('equal', {});
+        .then((response) => {
+            const { status, body } = response;
+            expect(status).equal(httpStatus.CREATED);
+            expect(body).to.equal(undefined);
+        })
     })
 })

@@ -1,19 +1,19 @@
 import * as awilix from 'awilix';
 
 import { StatusGetController } from '../controllers/StatusGetController';
-import { CoursePutController } from '../controllers/CoursePutController';
+import { CoursesPutController } from '../controllers/CoursesPutController';
 
 interface Container {
     statusGetController: StatusGetController;
-    coursePutController: CoursePutController;
+    coursesPutController: CoursesPutController;
 }
 
 const container = awilix.createContainer<Container>({ injectionMode: awilix.InjectionMode.PROXY });
 
 container.register({
     statusGetController: awilix.asClass(StatusGetController),
-    coursePutController: awilix.asClass(CoursePutController),
+    coursesPutController: awilix.asClass(CoursesPutController),
 })
 
 export const statusGetController = container.resolve('statusGetController');
-export const coursePutController = container.resolve('coursePutController');
+export const coursesPutController = container.resolve('coursesPutController');
