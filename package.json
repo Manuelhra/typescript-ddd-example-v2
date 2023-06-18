@@ -14,7 +14,7 @@
     "dev:mooc:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/mooc/backend/start.ts",
     "cypress:open": "NODE_ENV=test cypress open",
     "cypress:run": "NODE_ENV=test cypress run",
-    "cypress:mooc:backend": "concurrently \"npm run dev:mooc:backend\" \"sleep 5 && npm run cypress:run\""
+    "cy:run:mooc:backend": "concurrently \"npm run dev:mooc:backend\" \"sleep 5 && npm run cypress:run\""
   },
   "author": "manuelh_ra",
   "license": "ISC",
