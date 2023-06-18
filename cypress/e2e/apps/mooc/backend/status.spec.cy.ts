@@ -1,9 +1,9 @@
-describe('Status server',() => {
-  it('Get 200 on request /status', () => {
+import httpStatus from 'http-status';
+
+describe('Invoke service Status',() => {
+  it('The response staus code should be 200', () => {
     cy.request('GET', '/status')
-    .then((response) => {
-      expect(response.status).to.equal(200);
-      assert.equal(response.status, 400, 'Match');
-    });
-  })
-})
+    .its('status')
+    .should('equal', httpStatus.OK);
+  });
+});
