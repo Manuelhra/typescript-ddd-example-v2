@@ -12,5 +12,16 @@ describe('Invoke service Courses', () => {
             expect(status).equal(httpStatus.CREATED);
             expect(body).to.equal(undefined);
         })
+    });
+
+    it('The request data to create a course is invalid, and the response status should be 422."', () => {
+        cy.request({
+            method: 'PUT',
+            url: '/courses/ef8ac118-8d7f-49cc-abec-78e0d05af80a',
+            body: { id: "some-id", name: 'The best course', duration: 5000 },
+            failOnStatusCode: false,
+        })
+        .its('status')
+        .should('equal', httpStatus.UNPROCESSABLE_ENTITY);
     })
 })
