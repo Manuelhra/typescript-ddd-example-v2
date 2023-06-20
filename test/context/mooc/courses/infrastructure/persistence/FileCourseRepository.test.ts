@@ -5,8 +5,8 @@ import { FileCourseRepository } from '../../../../../../src/contexts/mooc/course
 
 describe('FileCourseRepository', () => {
     test('Should save a course', async () => {
-        const id: string = 'some-id';
-        const expectedCourse: Course = new Course({ id, name: 'some-name', duration: '5 hours' });
+        const id: string = 'id';
+        const expectedCourse: Course = new Course({ id, name: 'name', duration: '5 hours' });
         const repository = new FileCourseRepository();
 
         await repository.save(expectedCourse);
