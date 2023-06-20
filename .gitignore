@@ -156,4 +156,4 @@ dist
 build
 
 # temp jest
-.tmp
+*tmp
