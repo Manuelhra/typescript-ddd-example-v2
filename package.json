@@ -15,7 +15,7 @@
     "cypress:open": "NODE_ENV=test cypress open",
     "cypress:run": "NODE_ENV=test cypress run",
     "cy:run:mooc:backend": "concurrently \"npm run dev:mooc:backend\" \"sleep 5 && npm run cypress:run\"",
-    "test": "jest"
+    "test:unit": "NODE_ENV=test jest"
   },
   "author": "manuelh_ra",
   "license": "ISC",
