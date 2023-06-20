@@ -5,7 +5,7 @@ describe('Invoke service Courses', () => {
         cy.request({
         method: 'PUT',
         url: '/courses/ef8ac118-8d7f-49cc-abec-78e0d05af80a',
-        body: { name: 'The best course', duration: "5 hours" },
+        body: { id: "some-id", name: 'The best course', duration: "5 hours" },
         })
         .then((response) => {
             const { status, body } = response;

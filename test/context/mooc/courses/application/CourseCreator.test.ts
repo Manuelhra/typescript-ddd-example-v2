@@ -14,7 +14,7 @@ describe('CourseCreator', () => {
             save: jest.fn(),
         };
 
-        const creator = new CourseCreator(repository);
+        const creator = new CourseCreator({ courseRepository: repository });
         const id = 'some-id';
         const name = 'some-name';
         const duration = 'some-duration';

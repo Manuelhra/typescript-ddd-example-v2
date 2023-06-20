@@ -5,7 +5,7 @@ import { Course } from "../../domain/Course";
 import { CourseRepository } from "../../domain/CourseRepository";
 
 export class FileCourseRepository implements CourseRepository {
-    private readonly FILE_PATH = `${__dirname}/courses`;
+    #FILE_PATH = `${__dirname}/courses`;
 
     async save(course: Course): Promise<void> {
         fs.promises.writeFile(this.filePath(course.id), serialize(course));
@@ -19,6 +19,6 @@ export class FileCourseRepository implements CourseRepository {
     }
 
     private filePath(id: string): string {
-        return `${this.FILE_PATH}.${id}.repo`;
+        return `${this.#FILE_PATH}.${id}.repo`;
     }
 }
