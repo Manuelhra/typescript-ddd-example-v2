@@ -1,3 +1,4 @@
+import { Uuid } from "../../../shared/domain/value-object/Uuid";
 import { Course } from "../domain/Course";
 import { CourseRepository } from "../domain/CourseRepository";
 import { CoursesCreatorRequest } from "./CoursesCreatorRequest";
@@ -12,7 +13,7 @@ export class CourseCreator {
     }
 
     async run(request: CoursesCreatorRequest): Promise<void> {
-        const course = new Course({ id: request.id, name: request.name, duration: request.duration });
+        const course = new Course({ id: new Uuid(request.id), name: request.name, duration: request.duration });
 
         return this.#repository.save(course);
     }

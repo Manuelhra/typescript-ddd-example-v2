@@ -3,12 +3,13 @@ import { serialize, deserialize } from 'bson';
 
 import { Course } from "../../domain/Course";
 import { CourseRepository } from "../../domain/CourseRepository";
+// import { Uuid } from "../../../../shared/domain/value-object/Uuid";
 
 export class FileCourseRepository implements CourseRepository {
     #FILE_PATH = `${__dirname}/courses`;
 
     async save(course: Course): Promise<void> {
-        await fs.promises.writeFile(this.filePath(course.id), serialize(course));
+        await fs.promises.writeFile(this.filePath(course.id.getValue()), serialize(course));
     }
 
     async search(courseId: string): Promise<Course> {
@@ -16,7 +17,7 @@ export class FileCourseRepository implements CourseRepository {
 
         const { id, name, duration } = deserialize(courseData);
 
-        return new Course({ id, name, duration });
+        return new Course({ id , name, duration });
     }
 
     private filePath(id: string): string {
