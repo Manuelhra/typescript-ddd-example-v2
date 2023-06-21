@@ -3,7 +3,6 @@ import { serialize, deserialize } from 'bson';
 
 import { Course } from "../../domain/Course";
 import { CourseRepository } from "../../domain/CourseRepository";
-// import { Uuid } from "../../../../shared/domain/value-object/Uuid";
 
 export class FileCourseRepository implements CourseRepository {
     #FILE_PATH = `${__dirname}/courses`;
