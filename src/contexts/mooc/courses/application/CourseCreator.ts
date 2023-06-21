@@ -1,5 +1,6 @@
 import { Course } from "../domain/Course";
 import { CourseRepository } from "../domain/CourseRepository";
+import { CoursesCreatorRequest } from "./CoursesCreatorRequest";
 
 export class CourseCreator {
     #repository: CourseRepository;
@@ -10,8 +11,8 @@ export class CourseCreator {
         this.#repository = dependencies.courseRepository;
     }
 
-    async run(id: string, name: string, duration: string): Promise<void> {
-        const course = new Course({ id, name, duration });
+    async run(request: CoursesCreatorRequest): Promise<void> {
+        const course = new Course({ id: request.id, name: request.name, duration: request.duration });
 
         return this.#repository.save(course);
     }
