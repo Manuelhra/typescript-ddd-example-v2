@@ -8,11 +8,18 @@ export class FileCourseRepository implements CourseRepository {
     #FILE_PATH = `${__dirname}/courses`;
 
     async save(course: Course): Promise<void> {
-        await fs.promises.writeFile(this.filePath(course.id.getValue()), serialize(course));
+        const itemToBeStored: { id: string, name: string, duration: string } = { 
+            id: course.id.getValue(),
+            name: course.id.getValue(),
+            duration: course.duration,
+        };
+
+        await fs.promises.writeFile(this.filePath(course.id.getValue()), serialize(itemToBeStored));
     }
 
     async search(courseId: string): Promise<Course> {
         const courseData = await fs.promises.readFile(this.filePath(courseId));
+        console.log(deserialize(courseData), 'CourseData');
 
         const { id, name, duration } = deserialize(courseData);
 

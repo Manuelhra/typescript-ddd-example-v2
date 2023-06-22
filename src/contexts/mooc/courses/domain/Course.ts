@@ -1,17 +1,18 @@
 import { CourseId } from "../../shared/domain/courses/CourseId";
+import { CourseName } from "./CourseName";
 
 export class Course {
     readonly id: CourseId;
-    readonly name: string;
+    readonly name: CourseName;
     readonly duration: string;
 
     constructor({
         id,
         name,
         duration,
-    }: { id: CourseId, name: string, duration: string }) {
-        this.id = id;
-        this.name = name;
+    }: { id: string, name: string, duration: string }) {
+        this.id = new CourseId(id);
+        this.name = new CourseName(name);
         this.duration = duration;
     }
 }
