@@ -17,7 +17,7 @@ export class Uuid {
         }
     }
 
-    public getValue(): string {
+    public toString(): string {
         return this.#value;
     }
 } 

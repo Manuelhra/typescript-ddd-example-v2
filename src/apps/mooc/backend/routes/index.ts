@@ -10,7 +10,6 @@ const register = (routePath: string, router: Router): void => {
 
 export const registerRoutes =  (router: Router) => {
     const routes: string[] = glob.globSync(`**/*.route.*`, { cwd: __dirname });
-    console.log(routes);
     routes.map((route) => register(route, router));
 }
 

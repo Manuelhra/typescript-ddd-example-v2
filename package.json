@@ -20,6 +20,7 @@
   "author": "manuelh_ra",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@jest/globals": "^29.5.0",
     "@types/compression": "^1.7.2",
     "@types/errorhandler": "^1.5.0",
