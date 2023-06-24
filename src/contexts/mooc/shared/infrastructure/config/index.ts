@@ -1,19 +1,18 @@
 import convict from 'convict';
 
-const moocConfig = convict<{ env: null, mongo: { url: null } }>({
+const moocConfig = convict<{ env: string, mongo: { url: string } }>({
     env: {
         doc: 'The application environment',
         format: ['production', 'development', 'staging', 'test'],
         env: 'NODE_ENV',
-        default: null,
+        default: 'default',
     },
     mongo: {
         url: {
             doc: 'The mongo connection URL',
             format: String,
             env: 'MONGO_URL',
-            default: null,
-        }
+            default: 'mongodb://localhost:27017/mooc-backend-dev',        }
     }
 });
 

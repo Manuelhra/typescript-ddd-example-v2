@@ -4,13 +4,16 @@ import { MongoConfig } from "./MongoConfig";
 export class MongoClientFactory {
     static #clients: { [key: string] : MongoClient } = {};
 
-    static async createClient(boundedContextName: string, config: MongoConfig): Promise<MongoClient> {
-        let client = MongoClientFactory.getClient(boundedContextName);
+    static async createClient(params: {
+        boundedContextName: string;
+        mongoConfig: MongoConfig;
+    }): Promise<MongoClient> {
+        let client = MongoClientFactory.getClient(params.boundedContextName);
 
-        if (client === null) {
-            client = await MongoClientFactory.createAndConnectClient(config);
+        if (!client) {
+            client = await MongoClientFactory.createAndConnectClient(params.mongoConfig);
 
-            MongoClientFactory.registerClient(client, boundedContextName);
+            MongoClientFactory.registerClient(client, params.boundedContextName);
         }
 
         return client;
