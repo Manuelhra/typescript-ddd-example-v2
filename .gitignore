@@ -157,3 +157,6 @@ build
 
 # temp jest
 *tmp
+
+#docker
+data
