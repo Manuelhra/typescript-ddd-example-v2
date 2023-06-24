@@ -36,3 +36,4 @@ container.register({
 export const statusGetController = container.resolve('statusGetController');
 export const coursesPutController = container.resolve('coursesPutController');
 export const courseRepository = container.resolve('courseRepository');
+export const mongoClient = container.resolve('mongoClient');
